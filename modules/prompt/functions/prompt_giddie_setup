@@ -32,8 +32,8 @@ function +vi-git_precmd {
 function +vi-svn_precmd {
     _svn_branch=$(svn info 2>/dev/null\
                     | grep -e '^URL:'\
-                    | sed -re 's#.*'$T'/[-a-zA-Z0-9]+/##'\
-                    | sed -re 's#.*(trunk|ttools).*#\1#'\
+                    | sed -re 's#.*'$T'/[-a-zA-Z0-9]+/(ttools_development/)?##'\
+                    | sed -re 's#.*(\btrunk\b|\bttools\b).*#\1#'\
                     | sed -e 's#branches/##'\
                     | sed -re 's#(\w+/\w+/\w+)/.*#\1#')
     hook_com[branch]='%F{magenta}'${_svn_branch}:${hook_com[revision]}'%f'
