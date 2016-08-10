@@ -47,6 +47,7 @@ dfpgdev3=(-h dfpgdev3.texturallc.net -U kyokley)
 dfappps1=(-h dfappps1.texturallc.net -U textura_system)
 dev062=(-h dev062.texturallc.net -U kevinyokley)
 silverback=(-h silverback.texturallc.net -U textura_system)
+tmon=(-h chmonpro1.texturallc.net -U monitor)
 kottke=10.140.6.48
 
 almagest=(-h almagest.dyndns.org -U yokley)
