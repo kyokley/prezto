@@ -54,7 +54,7 @@ alias gcP='git cherry-pick --no-commit'
 alias gcr='git revert'
 alias gcR='git reset "HEAD^"'
 alias gcs='git show'
-alias gcl='git-commit-lost'
+# alias gcl='git-commit-lost'
 
 # Conflict (C)
 alias gCl='git status | sed -n "s/^.*both [a-z]*ed: *//p"'
