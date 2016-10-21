@@ -5,13 +5,13 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 #
-qoute1="
+quote1="
 And as for the critics, tell me I don’t get it.
 Everybody can tell you how to do it, they never did it.
   -- Jay-Z
 "
 
-qoute2="
+quote2="
 I'm the greatest
 I'm the greatest
 I'm the greatest
@@ -67,7 +67,13 @@ Because I spit hot fire
   -- Dylan
 "
 
-expressions=($qoute1 $qoute2 $quote3 $quote4 $quote5 $quote6 $qoute7 $qoute8 $quote9)
+quote10="
+Now tell me how you love it
+You know you at the top when only heaven's right above it
+  -- Lil' Wayne
+"
+
+expressions=($quote1 $quote2 $quote3 $quote4 $quote5 $quote6 $quote7 $quote8 $quote9 $quote10)
 
 # Seed random generator
 RANDOM=$$$(date +%s)
