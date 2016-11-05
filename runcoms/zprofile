@@ -90,3 +90,4 @@ case $TERM in
 esac
 
 export GOPATH="$HOME/workspace/golang"
+export PATH="$HOME/.node_modules_global/bin:$PATH"
