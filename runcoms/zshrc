@@ -60,6 +60,9 @@ alias runserver='./manage.py runserver --settings=dev_settings'
 alias cpm='if [ $VIRTUAL_ENV ]; then deactivate; else source ~/virtualenvs/cpm/bin/activate; fi'
 alias pdq='if [ $VIRTUAL_ENV ]; then deactivate; else source ~/virtualenvs/pdq/bin/activate; fi'
 
+# Custom git command
+alias git-scrub='git branch --merged | grep -v master | xargs git branch -d'
+
 # Source private env vars.
 if [ -f "$HOME/.zpriv" ]; then
     source "$HOME/.zpriv"
