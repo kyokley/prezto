@@ -64,7 +64,7 @@ alias pdq='if [ $VIRTUAL_ENV ]; then deactivate; else source ~/virtualenvs/pdq/b
 alias git-scrub='git branch --merged | grep -v master | xargs git branch -d'
 
 # Alias docker command
-alias krill='sudo docker run --rm -it kyokley/krill'
+alias krill='docker run --rm -it kyokley/krill'
 
 # Source private env vars.
 if [ -f "$HOME/.zpriv" ]; then
