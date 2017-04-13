@@ -63,8 +63,9 @@ alias pdq='if [ $VIRTUAL_ENV ]; then deactivate; else source ~/virtualenvs/pdq/b
 # Custom git command
 alias git-scrub='git branch --merged | grep -v master | xargs git branch -d'
 
-# Alias docker command
+# Alias docker commands
 alias krill='docker run --rm -it kyokley/krill'
+alias ovpn='docker run -it --rm --cpuset-cpus 0 --memory 512mb -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY -v $HOME/Downloads:/root/Downloads --privileged kyokley/vpn'
 
 # Source private env vars.
 if [ -f "$HOME/.zpriv" ]; then
