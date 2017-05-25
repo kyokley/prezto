@@ -65,7 +65,7 @@ alias git-scrub='git branch --merged | grep -v master | xargs git branch -d'
 
 # Alias docker commands
 alias krill='docker run --rm -it kyokley/krill'
-alias ossh='docker run --rm -it -p 127.0.0.1:2222-2223:2222-2223 --privileged --env HOST=yokley@100.66.128.75 kyokley/ossh'
+alias ossh='docker run --rm -it -p 127.0.0.1:2222-2223:2222-2223 --privileged --env HOST=yokley@dev007.us.oracle.com kyokley/ossh'
 
 # Source private env vars.
 if [ -f "$HOME/.zpriv" ]; then
