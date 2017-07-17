@@ -54,6 +54,7 @@ kottke=10.140.6.48
 
 almagest=(-h almagest.dyndns.org -U yokley)
 export PATH=$PATH:~/.cabal/bin
+export PATH=$PATH:/usr/local/go/bin
 
 alias google-chrome='google-chrome --disable-gpu-compositing'
 alias runserver='./manage.py runserver --settings=dev_settings'
