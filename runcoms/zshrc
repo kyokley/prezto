@@ -72,14 +72,14 @@ alias git-scrub='git branch --merged | grep -v master | xargs git branch -d'
 # Alias docker commands
 alias krill='docker run --rm -it kyokley/krill'
 alias ossh='docker run --rm -it -p 127.0.0.1:2222-2223:2222-2223 --privileged --env HOST=yokley@dev007.us.oracle.com kyokley/ossh'
-alias vt="docker run --rm
-                     -it
-                     -v ~/.ssh:/root/.ssh
-                     --env VT_URL=$VT_URL
-                     --env VT_USERNAME=yokley
-                     --env VT_DEFAULT_LIST=$VT_DEFAULT_LIST
-                     --env VT_PROXY=$VT_PROXY
-                     --net=host
+alias vt="docker run --rm \
+                     -it \
+                     -v ~/.ssh:/root/.ssh \
+                     --env VT_URL=$VT_URL \
+                     --env VT_USERNAME=yokley \
+                     --env VT_DEFAULT_LIST=$VT_DEFAULT_LIST \
+                     --env VT_PROXY=$VT_PROXY \
+                     --net=host \
                      kyokley/vt"
 
 # Source private env vars.
