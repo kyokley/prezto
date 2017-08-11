@@ -78,6 +78,14 @@ alias vt="docker run --rm \
                      --env VT_PROXY=$VT_PROXY \
                      --net=host \
                      kyokley/vt"
+alias color_git_blame="docker run --rm \
+                                  -i \
+                                  kyokley/color_blame \
+                                  color_git_blame"
+alias color_svn_blame="docker run --rm \
+                                  -i \
+                                  kyokley/color_blame \
+                                  color_svn_blame"
 
 # Source private env vars.
 if [ -f "$HOME/.zpriv" ]; then
