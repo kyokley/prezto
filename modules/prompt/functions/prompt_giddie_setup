@@ -44,6 +44,7 @@ function prompt_giddie_precmd {
   _prompt_giddie_pwd="${PWD/#$HOME/~}"
   _display_time="`date +'%a %b %d %T'`"
   vcs_info
+  python-info
 }
 
 function prompt_giddie_setup {
@@ -77,9 +78,12 @@ function prompt_giddie_setup {
   zstyle ':vcs_info:svn*+set-message:*' hooks set_vcs_prompt_symbol svn_precmd
   zstyle ':vcs_info:*+set-message:*' hooks set_vcs_prompt_symbol
 
+  # Set python-info parameters.
+  zstyle ':prezto:module:python:info:virtualenv' format '%F{yellow}[%v]%f '
+
   # Define prompts.
   PROMPT='%(?..%F{red}%B-> [%?]%b%f
-)%F{magenta}%n%f@%F{yellow}%m%f|%F{green}${_prompt_giddie_pwd}%f${vcs_info_msg_0_}
+)$python_info[virtualenv]%F{magenta}%n%f@%F{yellow}%m%f|%F{green}${_prompt_giddie_pwd}%f${vcs_info_msg_0_}
 %F{blue}${_prompt_giddie_symbol}%f '
   RPROMPT='${editor_info[keymap]}${_display_time}'
   SPROMPT='zsh: correct %F{magenta}%R%f to %F{green}%r%f [nyae]? '
