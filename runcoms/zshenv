@@ -87,6 +87,8 @@ alias color_svn_blame="docker run --rm \
                                   kyokley/color_blame \
                                   color_svn_blame"
 
+setopt NO_NOMATCH
+
 # Source private env vars.
 if [ -f "$HOME/.zpriv" ]; then
     source "$HOME/.zpriv"
