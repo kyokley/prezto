@@ -13,6 +13,7 @@
 # Screenshots:
 #   http://i.imgur.com/rCo3S.png
 #
+bindkey -v
 
 function +vi-set_novcs_prompt_symbol {
   _prompt_giddie_symbol='>'
@@ -61,7 +62,7 @@ function prompt_giddie_setup {
 
   # Set editor-info parameters.
   zstyle ':prezto:module:editor:info:completing' format '%F{green}...%f'
-  zstyle ':prezto:module:editor:info:keymap:alternate' format '%F{yellow}--- COMMAND ---%f'
+  zstyle ':prezto:module:editor:info:keymap:alternate' format '%F{yellow}[NORMAL] %f'
 
   # Set vcs_info parameters.
   zstyle ':vcs_info:*' check-for-changes true
