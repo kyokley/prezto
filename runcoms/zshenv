@@ -43,7 +43,10 @@ export VT_SHOW_TRACEBACK=true
 export VT_DEFAULT_LIST=personal
 export VT_PROXY=''
 export VT_URL='https://almagest.dyndns.org:7001/vittlify/'
-
+export VT_SHOW_TRACEBACK='true'
+export VT_PROXY='socks5://localhost:8081'
+export VT_DEFAULT_LIST='83a16930'
+export BROWSER='vivaldi'
 dfpgdev2=(-h dfpgdev2.texturallc.net -U textura_system)
 dfpgdev3=(-h dfpgdev3.texturallc.net -U kyokley)
 dfappps1=(-h dfappps1.texturallc.net -U textura_system)
