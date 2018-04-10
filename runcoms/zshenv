@@ -39,10 +39,15 @@ export J2REDIR=/usr/lib/jvm/oracle_jdk8/jre
 export PATH=$PATH:/usr/lib/jvm/oracle_jdk8/bin:/usr/lib/jvm/oracle_jdk8/db/bin:/usr/lib/jvm/oracle_jdk8/jre/bin
 export JAVA_HOME=/usr/lib/jvm/oracle_jdk8
 export DERBY_HOME=/usr/lib/jvm/oracle_jdk8/db
+
 export VT_SHOW_TRACEBACK=true
 export VT_DEFAULT_LIST=personal
 export VT_PROXY=''
 export VT_URL='https://almagest.dyndns.org:7001/vittlify/'
+
+export BROWSER='vivaldi'
+
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 dfpgdev2=(-h dfpgdev2.texturallc.net -U textura_system)
 dfpgdev3=(-h dfpgdev3.texturallc.net -U kyokley)
@@ -86,6 +91,7 @@ alias color_svn_blame="docker run --rm \
                                   -i \
                                   kyokley/color_blame \
                                   color_svn_blame"
+alias cycle_bluetooth="python3 $HOME/workspace/a2dp/a2dp.py"
 
 setopt NO_NOMATCH
 
