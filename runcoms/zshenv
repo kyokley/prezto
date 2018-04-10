@@ -73,6 +73,8 @@ alias color_svn_blame="docker run --rm \
                                   kyokley/color_blame \
                                   color_svn_blame"
 
+alias cycle_bluetooth="python3 $HOME/workspace/a2dp/a2dp.py"
+
 setopt NO_NOMATCH
 
 # Source private env vars.
