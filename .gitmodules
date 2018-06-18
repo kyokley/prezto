@@ -21,7 +21,7 @@
 	url = https://github.com/sindresorhus/pure.git
 [submodule "modules/wd"]
 	path = modules/wd
-	url = git@github.com:kyokley/wd.git
+	url = https://github.com/kyokley/wd.git
 [submodule "modules/fasd/external"]
 	path = modules/fasd/external
 	url = https://github.com/clvv/fasd.git
