@@ -78,6 +78,14 @@ alias color_svn_blame="docker run --rm \
                                   -i \
                                   kyokley/color_blame \
                                   color_svn_blame"
+alias neomutt="docker run -it --rm --name mutt -e TERM \
+                          -v $HOME/.mutt/muttrc:/home/user/.neomuttrc:rw \
+                          -v $HOME/.msmtprc:/home/user/.msmtprc:ro \
+                          -v /etc/localtime:/etc/localtime:ro \
+                          -v $HOME/.mutt/header_cache:/home/user/.mutt/header_cache:rw \
+                          -v $HOME/.mutt/body_cache:/home/user/.mutt/body_cache \
+                          -v $HOME/.mutt/mailcap:/home/user/.mailcap \
+                          kyokley/neomutt"
 
 alias cycle_bluetooth="python3 $HOME/workspace/a2dp/a2dp.py"
 
