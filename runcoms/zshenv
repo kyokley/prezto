@@ -95,7 +95,7 @@ alias proton_chromium="docker run -it --rm \
                                   -e DISPLAY=unix$DISPLAY \
                                   -v $HOME/Downloads:/home/chromium/Downloads \
                                   -v $HOME/.config/chromium/:/data \
-                                  --security-opt seccomp=$HOME/chrome.json \
+                                  --security-opt seccomp=$HOME/chrome_sec.json \
                                   --device /dev/snd \
                                   -v /dev/shm:/dev/shm \
                                   --name chromium \
