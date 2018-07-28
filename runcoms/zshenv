@@ -87,6 +87,22 @@ alias neomutt="docker run -it --rm --name mutt -e TERM \
                           -v $HOME/.mutt/mailcap:/home/user/.mailcap \
                           kyokley/neomutt"
 
+# May be necessary to run "xhost +" before the following will work
+alias proton_chromium="docker run -it --rm \
+                                  --cpuset-cpus 0 \
+                                  --memory 512mb \
+                                  -v /tmp/.X11-unix:/tmp/.X11-unix \
+                                  -e DISPLAY=unix$DISPLAY \
+                                  -v $HOME/Downloads:/home/chromium/Downloads \
+                                  -v $HOME/.config/chromium/:/data \
+                                  --security-opt seccomp=$HOME/chrome.json \
+                                  --device /dev/snd \
+                                  -v /dev/shm:/dev/shm \
+                                  --name chromium \
+                                  --device /dev/net/tun \
+                                  --cap-add=NET_ADMIN \
+                                  kyokley/proton_chromium"
+
 setopt NO_NOMATCH
 
 # Source private env vars.
