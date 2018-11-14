@@ -103,6 +103,7 @@ alias proton_chromium="docker run -it --rm \
                                   --cap-add=NET_ADMIN \
                                   kyokley/proton_chromium"
 alias cat='bat'
+alias dc=docker-compose
 
 setopt NO_NOMATCH
 
