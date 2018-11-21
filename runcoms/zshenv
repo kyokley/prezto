@@ -25,7 +25,6 @@ alias rpsql='PAGER=less /usr/bin/psql'
 alias rpgcli='PAGER=less /usr/local/bin/pgcli'
 
 # from /home/yokley/.bashrc
-export EMAIL=kevin.yokley #youremailusername - for database scrubbing
 export J2SDKDIR=/usr/lib/jvm/oracle_jdk8
 export J2REDIR=/usr/lib/jvm/oracle_jdk8/jre
 export PATH=$PATH:/usr/lib/jvm/oracle_jdk8/bin:/usr/lib/jvm/oracle_jdk8/db/bin:/usr/lib/jvm/oracle_jdk8/jre/bin
@@ -54,13 +53,6 @@ alias git-scrub='git branch --merged | grep -v master | xargs git branch -d'
 
 # Alias docker commands
 alias krill='docker run --rm -it kyokley/krill'
-alias ossh='docker run --rm \
-                       -it \
-                       -p 127.0.0.1:2222:2222 \
-                       -p 127.0.0.1:2280:2280 \
-                       --privileged \
-                       --env HOST=yokley@dev007.us.oracle.com \
-                       kyokley/ossh'
 alias vt="docker run --rm \
                      -it \
                      -v ~/.ssh:/root/.ssh \
