@@ -44,6 +44,8 @@ almagest=(-h almagest.dyndns.org -U yokley)
 export PATH=$PATH:~/.cabal/bin
 export PATH=$PATH:/usr/local/go/bin
 
+export COMPOSE_HTTP_TIMEOUT=120
+
 alias google-chrome='google-chrome --disable-gpu-compositing'
 # and/or you can set the django settings module with an environment setting
 # export DJANGO_SETTINGS_MODULE='dev_settings'
