@@ -44,7 +44,7 @@ almagest=(-h almagest.dyndns.org -U yokley)
 export PATH=$PATH:~/.cabal/bin
 export PATH=$PATH:/usr/local/go/bin
 
-export COMPOSE_HTTP_TIMEOUT=120
+export COMPOSE_HTTP_TIMEOUT=180
 
 alias google-chrome='google-chrome --disable-gpu-compositing'
 # and/or you can set the django settings module with an environment setting
@@ -82,7 +82,7 @@ alias neomutt="docker run -it --rm --name mutt -e TERM \
                           kyokley/neomutt"
 
 # May be necessary to run "xhost +" before the following will work
-alias proton_chromium="docker run -it --rm \
+alias proton_chromium="xhost+ && docker run -it --rm \
                                   --cpuset-cpus 0 \
                                   --memory 512mb \
                                   -v /tmp/.X11-unix:/tmp/.X11-unix \
@@ -96,6 +96,17 @@ alias proton_chromium="docker run -it --rm \
                                   --device /dev/net/tun \
                                   --cap-add=NET_ADMIN \
                                   kyokley/proton_chromium"
+
+dvim() {
+    docker run \
+        --rm -it \
+        -e UID="$(id | grep -Po '(?<=uid=)\d+')" \
+        -e GID="$(id | grep -Po '(?<=gid=)\d+')" \
+        -v $(pwd):/files \
+        kyokley/neovim:latest \
+        "$@"
+       }
+
 alias cat='bat'
 alias dc=docker-compose
 
