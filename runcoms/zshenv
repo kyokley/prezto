@@ -16,6 +16,11 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+
 # from /home/yokley/.bashrc
 export J2SDKDIR=/usr/lib/jvm/oracle_jdk8
 export J2REDIR=/usr/lib/jvm/oracle_jdk8/jre
@@ -104,6 +109,8 @@ docker run \
     --rm -it \
     --net=host \
     -e "PGTZ=America/Chicago" \
+    -e "PSQL_HISTORY=/root/.psql_history" \
+    -v "$HOME/.psql_history:/root/.psql_history" \
     kyokley/psql \
     "$@"
 }
@@ -113,6 +120,8 @@ docker run \
     --rm -it \
     --net=host \
     -e "PGTZ=America/Chicago" \
+    -e "PSQL_HISTORY=/root/.psql_history" \
+    -v "$HOME/.psql_history:/root/.psql_history" \
     kyokley/pgcli \
     "$@"
 }
