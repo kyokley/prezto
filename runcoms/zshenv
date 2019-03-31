@@ -16,14 +16,6 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-# Vim Pager for psql!
-alias psql='PAGER=vimpsqlpager psql'
-alias pgcli='PAGER=vimpgclipager pgcli'
-
-# Unaltered PSQL/PGCLI
-alias rpsql='PAGER=less /usr/bin/psql'
-alias rpgcli='PAGER=less /usr/local/bin/pgcli'
-
 # from /home/yokley/.bashrc
 export J2SDKDIR=/usr/lib/jvm/oracle_jdk8
 export J2REDIR=/usr/lib/jvm/oracle_jdk8/jre
@@ -106,6 +98,22 @@ dvim() {
         kyokley/neovim:latest \
         "$@"
        }
+
+psql() {
+docker run \
+    --rm -it \
+    --net=host \
+    kyokley/psql \
+    "$@"
+}
+
+pgcli() {
+docker run \
+    --rm -it \
+    --net=host \
+    kyokley/pgcli \
+    "$@"
+}
 
 alias cat='bat'
 alias dc=docker-compose
