@@ -105,25 +105,29 @@ dvim() {
        }
 
 psql() {
-docker run \
-    --rm -it \
-    --net=host \
-    -e "PGTZ=America/Chicago" \
-    -e "PSQL_HISTORY=/root/.psql_history" \
-    -v "$HOME/.psql_history:/root/.psql_history" \
-    kyokley/psql \
-    "$@"
+    touch $HOME/.psql_history
+    docker run \
+        --rm -it \
+        --net=host \
+        -e "PGTZ=America/Chicago" \
+        -e "PSQL_HISTORY=/root/.psql_history" \
+        -v "$HOME/.psql_history:/root/.psql_history" \
+        kyokley/psql \
+        "$@"
 }
 
 pgcli() {
-docker run \
-    --rm -it \
-    --net=host \
-    -e "PGTZ=America/Chicago" \
-    -e "PSQL_HISTORY=/root/.psql_history" \
-    -v "$HOME/.psql_history:/root/.psql_history" \
-    kyokley/pgcli \
-    "$@"
+    mkdir -p $HOME/.config/pgcli
+    touch $HOME/.config/pgcli/history
+    docker run \
+        --rm -it \
+        --net=host \
+        -e UID="$(id | grep -Po '(?<=uid=)\d+')" \
+        -e GID="$(id | grep -Po '(?<=gid=)\d+')" \
+        -e "PGTZ=America/Chicago" \
+        -v "$HOME/.config/pgcli/history:/root/.config/pgcli/history" \
+        kyokley/pgcli \
+        "$@"
 }
 
 alias dc=docker-compose
