@@ -103,6 +103,7 @@ psql() {
 docker run \
     --rm -it \
     --net=host \
+    -e "PGTZ=America/Chicago" \
     kyokley/psql \
     "$@"
 }
@@ -111,6 +112,7 @@ pgcli() {
 docker run \
     --rm -it \
     --net=host \
+    -e "PGTZ=America/Chicago" \
     kyokley/pgcli \
     "$@"
 }
