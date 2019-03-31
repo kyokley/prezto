@@ -117,7 +117,6 @@ docker run \
     "$@"
 }
 
-alias cat='bat'
 alias dc=docker-compose
 
 setopt NO_NOMATCH
