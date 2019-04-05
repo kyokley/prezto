@@ -132,6 +132,13 @@ pgcli() {
 
 alias dc=docker-compose
 
+cycle_home(){
+    cycle_bluetooth '04:5D:4B:EA:71:6D'
+}
+cycle_work(){
+    cycle_bluetooth 'AC:9B:0A:14:AA:EA'
+}
+
 setopt NO_NOMATCH
 
 # Source private env vars.
