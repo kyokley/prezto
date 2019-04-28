@@ -21,6 +21,8 @@ export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 
+export GPG_TTY=$(tty)
+
 # from /home/yokley/.bashrc
 export J2SDKDIR=/usr/lib/jvm/oracle_jdk8
 export J2REDIR=/usr/lib/jvm/oracle_jdk8/jre
@@ -75,7 +77,6 @@ alias neomutt="docker run -it --rm --name mutt -e TERM \
                           -v /etc/localtime:/etc/localtime:ro \
                           -v $HOME/.mutt/header_cache:/home/user/.mutt/header_cache:rw \
                           -v $HOME/.mutt/body_cache:/home/user/.mutt/body_cache \
-                          -v $HOME/.mutt/mailcap:/home/user/.mailcap \
                           -v $HOME/.mutt/password:/home/user/.mutt/password \
                           kyokley/neomutt"
 
