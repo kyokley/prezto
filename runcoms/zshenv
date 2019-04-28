@@ -76,6 +76,7 @@ alias neomutt="docker run -it --rm --name mutt -e TERM \
                           -v $HOME/.mutt/header_cache:/home/user/.mutt/header_cache:rw \
                           -v $HOME/.mutt/body_cache:/home/user/.mutt/body_cache \
                           -v $HOME/.mutt/mailcap:/home/user/.mailcap \
+                          -v $HOME/.mutt/password:/home/user/.mutt/password \
                           kyokley/neomutt"
 
 # May be necessary to run "xhost +" before the following will work
