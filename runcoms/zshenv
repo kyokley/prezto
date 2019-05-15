@@ -136,6 +136,47 @@ pgcli() {
         "$@"
 }
 
+pg_dump() {
+    docker run \
+        --rm -it \
+        --net=host \
+        -e "PGTZ=America/Chicago" \
+        --entrypoint "pg_dump" \
+        kyokley/psql \
+        "$@"
+}
+
+# This function is specially designed to accept a db dump on stdin
+# and load it into a database
+pg_load(){
+    docker run \
+        --rm -i \
+        --net=host \
+        kyokley/psql \
+        "$@"
+}
+
+
+createdb() {
+    docker run \
+        --rm -it \
+        --net=host \
+        -e "PGTZ=America/Chicago" \
+        --entrypoint "createdb" \
+        kyokley/psql \
+        "$@"
+}
+
+dropdb() {
+    docker run \
+        --rm -it \
+        --net=host \
+        -e "PGTZ=America/Chicago" \
+        --entrypoint "dropdb" \
+        kyokley/psql \
+        "$@"
+}
+
 alias dc=docker-compose
 
 cycle_home(){
