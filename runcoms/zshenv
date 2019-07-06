@@ -179,6 +179,10 @@ dropdb() {
         "$@"
 }
 
+diffr() {
+    docker run --rm -i kyokley/diffr "$@"
+}
+
 alias dc=docker-compose
 
 cycle_home(){
