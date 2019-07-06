@@ -20,3 +20,8 @@ wd() {
 compinit -i
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# autoload -Uz compinit
+# compinit
+# Completion for kitty
+which kitty >/dev/null 2>&1 && kitty + complete setup zsh | source /dev/stdin
