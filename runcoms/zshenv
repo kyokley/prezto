@@ -81,7 +81,7 @@ alias neomutt="docker run -it --rm --name mutt -e TERM \
                           kyokley/neomutt"
 
 # May be necessary to run "xhost +" before the following will work
-alias proton_chromium="xhost+ && docker run -it --rm \
+alias proton_chromium="xhost + && docker run -it --rm \
                                   --cpuset-cpus 0 \
                                   --memory 512mb \
                                   -v /tmp/.X11-unix:/tmp/.X11-unix \
@@ -118,6 +118,7 @@ psql() {
         -e "PGTZ=America/Chicago" \
         -e "PSQL_HISTORY=/root/.psql_history" \
         -v "$HOME/.psql_history:/root/.psql_history" \
+        -v "/tmp:/tmp" \
         kyokley/psql \
         "$@"
 }
@@ -132,6 +133,7 @@ pgcli() {
         -e GID="$(id | grep -Po '(?<=gid=)\d+')" \
         -e "PGTZ=America/Chicago" \
         -v "$HOME/.config/pgcli/history:/root/.config/pgcli/history" \
+        -v "/tmp:/tmp" \
         kyokley/pgcli \
         "$@"
 }
