@@ -180,7 +180,7 @@ dropdb() {
 }
 
 diffr() {
-    docker run --rm -i kyokley/diffr "$@"
+    docker run --rm -i kyokley/diffr "$@" | less -R
 }
 
 alias dc=docker-compose
