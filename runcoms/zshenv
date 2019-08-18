@@ -193,6 +193,15 @@ lockbox() {
            kyokley/lockbox "$@"
 }
 
+qw() {
+    UID="$(id | grep -Po '(?<=uid=)\d+')"
+    GID="$(id | grep -Po '(?<=gid=)\d+')"
+    docker run \
+           --rm -it \
+           -u $UID:$GID \
+           kyokley/quick-word "$@"
+}
+
 cycle_home(){
     cycle_bluetooth '04:5D:4B:EA:71:6D'
 }
