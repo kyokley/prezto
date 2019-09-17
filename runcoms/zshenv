@@ -125,8 +125,6 @@ docker-vivaldi(){
 dvim() {
     docker run \
         --rm -it \
-        -e UID="$(id | grep -Po '(?<=uid=)\d+')" \
-        -e GID="$(id | grep -Po '(?<=gid=)\d+')" \
         -v $(pwd):/files \
         kyokley/neovim:latest \
         "$@"
@@ -204,6 +202,11 @@ dropdb() {
 diffr() {
     docker run --rm -i kyokley/diffr "$@" | less -R
 }
+
+diff-so-fancy() {
+    docker run --rm -i kyokley/diff-so-fancy "$@" 2>/dev/null | less -R
+}
+alias dsf='diff-so-fancy'
 
 lockbox() {
     UID="$(id | grep -Po '(?<=uid=)\d+')"
