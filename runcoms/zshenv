@@ -208,6 +208,10 @@ diff-so-fancy() {
 }
 alias dsf='diff-so-fancy'
 
+delta() {
+    docker run --rm -i kyokley/delta "$@" 2>/dev/null | less -R
+}
+
 lockbox() {
     UID="$(id | grep -Po '(?<=uid=)\d+')"
     GID="$(id | grep -Po '(?<=gid=)\d+')"
