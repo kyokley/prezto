@@ -238,6 +238,22 @@ cycle_work(){
     cycle_bluetooth 'AC:9B:0A:14:AA:EA'
 }
 
+# Some commands to open github pages
+gh-url(){
+    # Borrowed bits of the following from:
+    # https://github.com/oguzbilgic/dotfiles/blob/master/config/fish/functions/gh.fish
+
+    origin=$(git remote get-url origin)
+    repo=$(echo $origin | python -c "import sys; url = sys.stdin.readline().strip(); print(url.split(':')[1][:-4])")
+    echo "https://github.com/$repo"
+}
+gh(){
+    xdg-open $(gh-url) 2>&1 > /dev/null &
+}
+gh-pr(){
+    xdg-open "$(gh-url)/pulls" 2>&1 > /dev/null &
+}
+
 setopt NO_NOMATCH
 
 # Source private env vars.
