@@ -57,7 +57,7 @@ alias mkdir="${aliases[mkdir]:-mkdir} -p"
 alias p='${(z)PAGER}'
 alias po='popd'
 alias pu='pushd'
-alias rm="${aliases[rm]:-rm} -I"
+# alias rm="${aliases[rm]:-rm} -I" # I prefer flying without a net
 alias sa='alias | grep -i'
 alias type='type -a'
 
