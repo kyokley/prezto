@@ -259,6 +259,17 @@ gh-pr(){
     xdg-open "$(gh-url)/pulls" 2>&1 > /dev/null &
 }
 
+calories(){
+    docker run --rm -it -v /home/yokley/.config/calories/calories.db:/root/calories.db -v /home/yokley/.config/calories/caloriesconf:/go/bin/.caloriesconf kyokley/calories "$@"
+}
+
+function chpwd(){
+    export GIT_BASE='master'
+    if [ -r $PWD/.zsh_config ]; then
+        source $PWD/.zsh_config
+    fi
+}
+
 setopt NO_NOMATCH
 
 # Source private env vars.
