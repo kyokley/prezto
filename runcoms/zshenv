@@ -103,6 +103,8 @@ alias sqlparse="docker run --rm \
                            -i \
                            kyokley/sqlparse"
 
+alias open='xdg-open'
+
 docker-vivaldi(){
     xhost +
     docker run --rm -it -d \
