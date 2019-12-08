@@ -31,3 +31,9 @@ if [ -f '/home/yokley/google-cloud-sdk/path.zsh.inc' ]; then . '/home/yokley/goo
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/yokley/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/yokley/google-cloud-sdk/completion.zsh.inc'; fi
+
+### Added by Zplugin's installer
+source "$HOME/.zplugin/bin/zplugin.zsh"
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+### End of Zplugin installer's chunk
