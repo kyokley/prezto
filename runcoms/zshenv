@@ -259,6 +259,13 @@ gh-pr(){
     xdg-open "$(gh-url)/pulls" 2>&1 > /dev/null &
 }
 
+lazydocker(){
+    mkdir -p $HOME/.config/lazydocker
+    docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock \
+                        -v ~/.config/lazydocker:/.config/jesseduffield/lazydocker \
+                        lazyteam/lazydocker
+}
+
 calories(){
     docker run --rm -it -v /home/yokley/.config/calories/calories.db:/root/calories.db -v /home/yokley/.config/calories/caloriesconf:/go/bin/.caloriesconf kyokley/calories "$@"
 }
