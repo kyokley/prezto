@@ -277,6 +277,9 @@ function chpwd(){
     fi
 }
 
+
+alias asciicast2gif='docker run --rm -v $PWD:/data asciinema/asciicast2gif'
+
 setopt NO_NOMATCH
 
 # Source private env vars.
