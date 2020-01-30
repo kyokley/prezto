@@ -104,6 +104,7 @@ alias sqlparse="docker run --rm \
                            kyokley/sqlparse"
 
 alias open='xdg-open'
+alias vimdiff='vim -d'
 
 docker-vivaldi(){
     xhost +
