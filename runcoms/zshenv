@@ -103,7 +103,6 @@ alias sqlparse="docker run --rm \
                            -i \
                            kyokley/sqlparse"
 
-alias open='xdg-open'
 alias vimdiff='vim -d'
 
 docker-vivaldi(){
@@ -276,6 +275,13 @@ function chpwd(){
     if [ -r $PWD/.zsh_config ]; then
         source $PWD/.zsh_config
     fi
+}
+
+function open(){
+    for arg in $@
+    do
+        xdg-open $arg &
+    done
 }
 
 
