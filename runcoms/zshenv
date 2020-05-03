@@ -105,7 +105,7 @@ alias sqlparse="docker run --rm \
 
 alias vimdiff='vim -d'
 
-docker-vivaldi(){
+function docker-vivaldi(){
     xhost +
     docker run --rm -it -d \
         --memory 4gb \
@@ -127,7 +127,7 @@ docker-vivaldi(){
         kyokley/vivaldi "$@"
 }
 
-dvim() {
+function dvim() {
     docker run \
         --rm -it \
         -v $(pwd):/files \
@@ -135,7 +135,7 @@ dvim() {
         "$@"
        }
 
-psql() {
+function psql() {
     touch $HOME/.psql_history
     docker run \
         --rm -it \
@@ -148,7 +148,7 @@ psql() {
         "$@"
 }
 
-pgcli() {
+function pgcli() {
     mkdir -p $HOME/.config/pgcli
     touch $HOME/.config/pgcli/history
     docker run \
@@ -163,7 +163,7 @@ pgcli() {
         "$@"
 }
 
-pg_dump() {
+function pg_dump() {
     docker run \
         --rm -it \
         --net=host \
@@ -175,7 +175,7 @@ pg_dump() {
 
 # This function is specially designed to accept a db dump on stdin
 # and load it into a database
-pg_load(){
+function pg_load(){
     docker run \
         --rm -i \
         --net=host \
@@ -184,7 +184,7 @@ pg_load(){
 }
 
 
-createdb() {
+function createdb() {
     docker run \
         --rm -it \
         --net=host \
@@ -194,7 +194,7 @@ createdb() {
         "$@"
 }
 
-dropdb() {
+function dropdb() {
     docker run \
         --rm -it \
         --net=host \
@@ -204,20 +204,20 @@ dropdb() {
         "$@"
 }
 
-diffr() {
+function diffr() {
     docker run --rm -i kyokley/diffr "$@" | less -R
 }
 
-diff-so-fancy() {
+function diff-so-fancy() {
     docker run --rm -i kyokley/diff-so-fancy "$@" 2>/dev/null | less -R
 }
 alias dsf='diff-so-fancy'
 
-delta() {
+function delta() {
     docker run --rm -i kyokley/delta "$@" 2>/dev/null | less -R
 }
 
-lockbox() {
+function lockbox() {
     UID="$(id | grep -Po '(?<=uid=)\d+')"
     GID="$(id | grep -Po '(?<=gid=)\d+')"
     docker run \
@@ -227,7 +227,7 @@ lockbox() {
            kyokley/lockbox "$@"
 }
 
-qw() {
+function qw() {
     UID="$(id | grep -Po '(?<=uid=)\d+')"
     GID="$(id | grep -Po '(?<=gid=)\d+')"
     docker run \
@@ -236,15 +236,15 @@ qw() {
            kyokley/quick-word "$@"
 }
 
-cycle_home(){
+function cycle_home(){
     cycle_bluetooth '04:5D:4B:EA:71:6D'
 }
-cycle_work(){
+function cycle_work(){
     cycle_bluetooth 'AC:9B:0A:14:AA:EA'
 }
 
 # Some commands to open github pages
-gh-url(){
+function gh-url(){
     # Borrowed bits of the following from:
     # https://github.com/oguzbilgic/dotfiles/blob/master/config/fish/functions/gh.fish
 
@@ -252,21 +252,21 @@ gh-url(){
     repo=$(echo $origin | python -c "import sys; url = sys.stdin.readline().strip(); print(url.split(':')[1][:-4])")
     echo "https://github.com/$repo"
 }
-gh(){
+function gh(){
     xdg-open $(gh-url) 2>&1 > /dev/null &
 }
-gh-pr(){
+function gh-pr(){
     xdg-open "$(gh-url)/pulls" 2>&1 > /dev/null &
 }
 
-lazydocker(){
+function lazydocker(){
     mkdir -p $HOME/.config/lazydocker
     docker run --rm -it -v /var/run/docker.sock:/var/run/docker.sock \
                         -v ~/.config/lazydocker:/.config/jesseduffield/lazydocker \
                         lazyteam/lazydocker
 }
 
-calories(){
+function calories(){
     docker run --rm -it -v /home/yokley/.config/calories/calories.db:/root/calories.db -v /home/yokley/.config/calories/caloriesconf:/go/bin/.caloriesconf kyokley/calories "$@"
 }
 
