@@ -284,6 +284,10 @@ function open(){
     done
 }
 
+function strip(){
+    mv "$1" $(echo "$1" | sed 's/ /_/g')
+}
+
 
 alias asciicast2gif='docker run --rm -v $PWD:/data asciinema/asciicast2gif'
 
