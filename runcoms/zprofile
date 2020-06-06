@@ -14,14 +14,8 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 #
-# Editors
+# Environment Settings
 #
-
-export EDITOR='vim'
-export SVN_EDITOR='vim'
-export VISUAL='vim'
-export PAGER='less'
-
 export DE='gnome'
 export TERM='xterm-256color'
 
@@ -88,8 +82,3 @@ case $TERM in
         precmd () {print -Pn "\e]0;%n@%m: %~\a"}
         ;;
 esac
-
-export GOPATH="$HOME/workspace/golang"
-export PATH="$HOME/.node_modules_global/bin:$PATH"
-
-export PATH="$HOME/.poetry/bin:$PATH"

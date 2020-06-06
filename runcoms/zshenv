@@ -13,6 +13,15 @@ fi
 # Disable Prezto safe-ops
 zstyle ':prezto:module:utility' safe-ops 'no'
 
+# Editor Settings
+export EDITOR='vim'
+export SVN_EDITOR='vim'
+export VISUAL='vim'
+export PAGER='less'
+
+export GOPATH="$HOME/workspace/golang"
+export PATH="$HOME/.node_modules_global/bin:$PATH"
+
 #PYENV Setup
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH:$HOME/.poetry/bin"
@@ -38,15 +47,18 @@ export VT_DEFAULT_LIST=personal
 export VT_PROXY=''
 export VT_URL='https://almagest.dyndns.org:7001/vittlify/'
 
-export BROWSER='vivaldi'
+export BROWSER='brave'
 
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
-almagest=(-h almagest.dyndns.org -U yokley)
 export PATH=$PATH:~/.cabal/bin
 export PATH=$PATH:/usr/local/go/bin
 
 export COMPOSE_HTTP_TIMEOUT=180
+export DOCKER_BUILDKIT=1
+export COMPOSE_DOCKER_CLI_BUILD=1
+
+almagest=(-h almagest.dyndns.org -U yokley)
 
 alias google-chrome='google-chrome --disable-gpu-compositing'
 # and/or you can set the django settings module with an environment setting
