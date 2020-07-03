@@ -53,6 +53,7 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 export PATH=$PATH:~/.cabal/bin
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/.local/bin
 
 export COMPOSE_HTTP_TIMEOUT=180
 export DOCKER_BUILDKIT=1
