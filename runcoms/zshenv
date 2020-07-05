@@ -155,6 +155,7 @@ function dvim() {
             --rm -it \
             -v "$GIT_ROOT":/files \
             kyokley/neovim:latest \
+            -c "let &titlestring = \"${GIT_ROOT}\"" \
             $(
                     for file in $@
                     do
