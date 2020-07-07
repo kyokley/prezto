@@ -148,13 +148,20 @@ git-absolute-path () {
 
 function dvim() {
     GIT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null)
+    ROOT_HOME="/root"
 
     if [ $? -eq 0 ]
     then
         docker run \
             --rm -it \
             -v "$GIT_ROOT":/files \
+            -v "$HOME"/.vimbackup:"$ROOT_HOME"/.vimbackup \
+            -v "$HOME"/.vimswap:"$ROOT_HOME"/.vimswap \
+            -v "$HOME"/.vimundodir:"$ROOT_HOME"/.vimundodir \
+            -v "$HOME"/.vimviews:"$ROOT_HOME"/.vimviews \
+            -v "$HOME"/.local/share/nvim/shada:"$ROOT_HOME"/.shada \
             kyokley/neovim:latest \
+            -i "$ROOT_HOME"/.shada/dvim_main.shada \
             --cmd "let g:git_root = \"${GIT_ROOT}\"" \
             $(
                     for file in $@
