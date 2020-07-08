@@ -142,16 +142,29 @@ function docker-vivaldi(){
 
 git-absolute-path () {
     fullpath=$([[ $1 = /* ]] && echo "$1" || echo "$PWD/${1#./}")
-    gitroot="$(git rev-parse --show-toplevel)" || return 1
+    if [ $(git rev-parse --show-superproject-working-tree) ]
+    then
+        gitroot="$(git rev-parse --show-superproject-working-tree)"
+    else
+        gitroot="$(git rev-parse --show-toplevel)" || return 1
+    fi
     [[ "$fullpath" =~ "$gitroot" ]] && echo "${fullpath/$gitroot\//}"
 }
 
 function dvim() {
-    GIT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null)
     ROOT_HOME="/root"
+
+    GIT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null)
 
     if [ $? -eq 0 ]
     then
+        TITLE_ROOT="$GIT_ROOT"
+
+        if [ $(git rev-parse --show-superproject-working-tree 2>/dev/null) ]
+        then
+            GIT_ROOT="$(git rev-parse --show-superproject-working-tree)"
+        fi
+
         docker run \
             --rm -it \
             -v "$GIT_ROOT":/files \
@@ -162,7 +175,7 @@ function dvim() {
             -v "$HOME"/.local/share/nvim/shada:"$ROOT_HOME"/.shada \
             kyokley/neovim:latest \
             -i "$ROOT_HOME"/.shada/dvim_main.shada \
-            --cmd "let g:git_root = \"${GIT_ROOT}\"" \
+            --cmd "let g:git_root = \"${TITLE_ROOT}\"" \
             $(
                     for file in $@
                     do
