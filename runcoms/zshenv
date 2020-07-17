@@ -176,7 +176,7 @@ function dvim() {
             -v "$HOME"/.vimundodir:"$ROOT_HOME"/.vimundodir \
             -v "$HOME"/.vimviews:"$ROOT_HOME"/.vimviews \
             -v "$HOME"/.local/share/nvim/shada:"$ROOT_HOME"/.shada \
-            kyokley/neovim:latest \
+            kyokley/neovim-custom \
             -i "$ROOT_HOME"/.shada/dvim_main.shada \
             --cmd "let g:git_root = \"${TITLE_ROOT}\"" \
             $(
@@ -191,7 +191,7 @@ function dvim() {
             -e DISPLAY=unix$DISPLAY \
             -v /tmp/.X11-unix:/tmp/.X11-unix \
             -v $(pwd):/files \
-            kyokley/neovim:latest \
+            kyokley/neovim-custom \
             "$@"
     fi
 }
