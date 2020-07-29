@@ -297,13 +297,6 @@ function qw() {
            kyokley/quick-word "$@"
 }
 
-function cycle_home(){
-    cycle_bluetooth '04:5D:4B:EA:71:6D'
-}
-function cycle_work(){
-    cycle_bluetooth 'AC:9B:0A:14:AA:EA'
-}
-
 # Some commands to open github pages
 function gh-url(){
     # Borrowed bits of the following from:
