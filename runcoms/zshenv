@@ -59,7 +59,6 @@ export COMPOSE_HTTP_TIMEOUT=180
 export DOCKER_BUILDKIT=1
 export COMPOSE_DOCKER_CLI_BUILD=1
 
-almagest=(-h almagest.dyndns.org -U yokley)
 
 alias google-chrome='google-chrome --disable-gpu-compositing'
 # and/or you can set the django settings module with an environment setting
@@ -221,6 +220,17 @@ function pgcli() {
         -v "$HOME/.config/pgcli/history:/root/.config/pgcli/history" \
         -v "/tmp:/tmp" \
         kyokley/pgcli \
+        "$@"
+}
+
+function pg_export() {
+    docker run \
+        --rm -i \
+        --net=host \
+        -e UID="$(id | grep -Po '(?<=uid=)\d+')" \
+        -e GID="$(id | grep -Po '(?<=gid=)\d+')" \
+        -e "PGTZ=America/Chicago" \
+        kyokley/psql \
         "$@"
 }
 
