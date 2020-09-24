@@ -195,8 +195,14 @@ function dvim() {
     fi
 }
 
-function psql() {
+function init-psql() {
     touch $HOME/.psql_history
+
+    mkdir -p $HOME/.config/pgcli
+    touch $HOME/.config/pgcli/history
+}
+
+function psql() {
     docker run \
         --rm -it \
         --net=host \
@@ -204,13 +210,12 @@ function psql() {
         -e "PSQL_HISTORY=/root/.psql_history" \
         -v "$HOME/.psql_history:/root/.psql_history" \
         -v "/tmp:/tmp" \
+        -v "$(pwd):/workspace" \
         kyokley/psql \
         "$@"
 }
 
 function pgcli() {
-    mkdir -p $HOME/.config/pgcli
-    touch $HOME/.config/pgcli/history
     docker run \
         --rm -it \
         --net=host \
@@ -219,18 +224,8 @@ function pgcli() {
         -e "PGTZ=America/Chicago" \
         -v "$HOME/.config/pgcli/history:/root/.config/pgcli/history" \
         -v "/tmp:/tmp" \
+        -v "$(pwd):/workspace" \
         kyokley/pgcli \
-        "$@"
-}
-
-function pg_export() {
-    docker run \
-        --rm -i \
-        --net=host \
-        -e UID="$(id | grep -Po '(?<=uid=)\d+')" \
-        -e GID="$(id | grep -Po '(?<=gid=)\d+')" \
-        -e "PGTZ=America/Chicago" \
-        kyokley/psql \
         "$@"
 }
 
