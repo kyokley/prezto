@@ -200,6 +200,7 @@ function init-psql() {
 
     mkdir -p $HOME/.config/pgcli
     touch $HOME/.config/pgcli/history
+    touch $HOME/.pgpass
 }
 
 function psql() {
@@ -211,6 +212,7 @@ function psql() {
         -v "$HOME/.psql_history:/root/.psql_history" \
         -v "/tmp:/tmp" \
         -v "$(pwd):/workspace" \
+        -v "$HOME/.pgpass:/root/.pgpass" \
         kyokley/psql \
         "$@"
 }
@@ -225,6 +227,7 @@ function pgcli() {
         -v "$HOME/.config/pgcli/history:/root/.config/pgcli/history" \
         -v "/tmp:/tmp" \
         -v "$(pwd):/workspace" \
+        -v "$HOME/.pgpass:/root/.pgpass" \
         kyokley/pgcli \
         "$@"
 }
@@ -234,6 +237,7 @@ function pg_dump() {
         --rm -it \
         --net=host \
         -e "PGTZ=America/Chicago" \
+        -v "$HOME/.pgpass:/root/.pgpass" \
         --entrypoint "pg_dump" \
         kyokley/psql \
         "$@"
@@ -245,6 +249,7 @@ function pg_load(){
     docker run \
         --rm -i \
         --net=host \
+        -v "$HOME/.pgpass:/root/.pgpass" \
         kyokley/psql \
         "$@"
 }
@@ -255,6 +260,7 @@ function createdb() {
         --rm -it \
         --net=host \
         -e "PGTZ=America/Chicago" \
+        -v "$HOME/.pgpass:/root/.pgpass" \
         --entrypoint "createdb" \
         kyokley/psql \
         "$@"
@@ -265,6 +271,7 @@ function dropdb() {
         --rm -it \
         --net=host \
         -e "PGTZ=America/Chicago" \
+        -v "$HOME/.pgpass:/root/.pgpass" \
         --entrypoint "dropdb" \
         kyokley/psql \
         "$@"
