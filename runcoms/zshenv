@@ -69,15 +69,6 @@ alias git-scrub='git branch --merged | grep -v master | xargs git branch -d'
 
 # Alias docker commands
 alias krill='docker run --rm -it kyokley/krill'
-alias vt="docker run --rm \
-                     -it \
-                     -v ~/.ssh:/root/.ssh \
-                     --env VT_URL=$VT_URL \
-                     --env VT_USERNAME=yokley \
-                     --env VT_DEFAULT_LIST=$VT_DEFAULT_LIST \
-                     --env VT_PROXY=$VT_PROXY \
-                     --net=host \
-                     kyokley/vt"
 alias color_git_blame="docker run --rm \
                                   -i \
                                   kyokley/color_blame \
@@ -353,6 +344,18 @@ function open(){
 function strip(){
     mv "$1" $(echo "$1" | sed 's/ /_/g')
 }
+
+function vt(){
+    docker run --rm \
+        -it \
+        -v ~/.ssh:/root/.ssh \
+        --env VT_URL=$VT_URL \
+        --env VT_USERNAME=yokley \
+        --env VT_DEFAULT_LIST=$VT_DEFAULT_LIST \
+        --env VT_PROXY=$VT_PROXY \
+        --net=host \
+        kyokley/vt $@
+    }
 
 
 alias asciicast2gif='docker run --rm -v $PWD:/data asciinema/asciicast2gif'
