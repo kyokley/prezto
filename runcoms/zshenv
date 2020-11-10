@@ -357,6 +357,13 @@ function vt(){
         kyokley/vt $@
     }
 
+function open-vimswap(){
+    for file in ~/.vimswap/*
+    do
+        basename "$file" | sed 's!%!/!g' | sed -E 's!\.s[a-z]{2}$!!'
+    done | xargs vim
+}
+
 
 alias asciicast2gif='docker run --rm -v $PWD:/data asciinema/asciicast2gif'
 
