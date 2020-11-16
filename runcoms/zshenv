@@ -347,7 +347,7 @@ function strip(){
 
 function vt(){
     docker run --rm \
-        -it \
+        -t \
         -v ~/.ssh:/root/.ssh \
         --env VT_URL=$VT_URL \
         --env VT_USERNAME=yokley \
