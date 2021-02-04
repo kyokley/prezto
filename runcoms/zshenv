@@ -364,6 +364,22 @@ function open-vimswap(){
     done | xargs vim
 }
 
+function jirabot(){
+    docker run --rm -it -e JIRA_DOMAIN="$JIRA_DOMAIN" -v $HOME/.config/jirabot/creds:/root/.config/jirabot/creds kyokley/jirabot $@
+}
+function jira(){
+    if [ -z "$1" ]
+    then
+        issue=$(jirabot issue --quiet | sed 's/\s\+$//' | grep -vE '^$' | rofi -dmenu -i -multi-select | awk '{print $1}')
+        if [ $? -eq 0 ] && [ ! -z "$issue" ]
+        then
+            jirabot issue $issue
+        fi
+    else
+        jirabot issue $@
+    fi
+}
+
 
 alias asciicast2gif='docker run --rm -v $PWD:/data asciinema/asciicast2gif'
 
