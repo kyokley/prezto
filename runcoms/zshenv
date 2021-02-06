@@ -370,7 +370,7 @@ function jirabot(){
 function jira(){
     if [ -z "$1" ]
     then
-        issue=$(jirabot issue --quiet | sed 's/\s\+$//' | grep -vE '^$' | rofi -dmenu -i -multi-select | awk '{print $1}')
+        issue=$(jirabot issue --quiet | sed 's/\s\+$//' | grep -vE '^$' | rofi -dmenu -i -multi-select -p "jira" | awk '{print $1}')
         if [ $? -eq 0 ] && [ ! -z "$issue" ]
         then
             jirabot issue $issue
