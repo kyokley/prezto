@@ -381,28 +381,45 @@ function jira(){
 }
 
 function mv-cli(){
+    docker run --rm -it \
+        -v /tmp/.X11-unix:/tmp/.X11-unix \
+        -e DISPLAY=$DISPLAY \
+        -e MV_CLI_SERVER_URI=$MV_CLI_SERVER_URI \
+        --device /dev/snd \
+        --device /dev/dri/card0 \
+        -v /dev/shm:/dev/shm \
+        -v /dev/dri/card0:/dev/dri/card0 \
+        -v $HOME/.config/mv_creds:/root/.mv_creds \
+        kyokley/mv-cli $@
+}
+
+function tv-cli(){
     if [ -z "$1" ]
     then
-        PATH_ID=$(mv-cli tv | rofi -dmenu -i -pid /tmp/rofi.2 | grep -Po '(?<=\(id=)\d+')
+        PATH_ID=$(tv-cli tv | rofi -dmenu -i -pid /tmp/rofi.2 | grep -Po '(?<=\(id=)\d+')
         if [ $? -eq 0 ]
         then
-            TV_ID=$(mv-cli tv --path $PATH_ID | rofi -dmenu -i -pid /tmp/rofi.1 | grep -Po '(?<=\(id=)\d+')
+            TV_ID=$(tv-cli tv --path $PATH_ID | rofi -dmenu -i -pid /tmp/rofi.1 | grep -Po '(?<=\(id=)\d+')
             if [ $? -eq 0 ]
             then
-                mv-cli tv $TV_ID
+                tv-cli tv $TV_ID
             fi
         fi
     else
-        docker run --rm -it \
-                    -v /tmp/.X11-unix:/tmp/.X11-unix \
-                    -e DISPLAY=$DISPLAY \
-                    -e MV_CLI_SERVER_URI=$MV_CLI_SERVER_URI \
-                    --device /dev/snd \
-                    --device /dev/dri/card0 \
-                    -v /dev/shm:/dev/shm \
-                    -v /dev/dri/card0:/dev/dri/card0 \
-                    -v $HOME/.config/mv_creds:/root/.mv_creds \
-                    kyokley/mv-cli $@
+        mv-cli $@
+    fi
+}
+
+function movie-cli(){
+    if [ -z "$1" ]
+    then
+        MOVIE_ID=$(movie-cli movie | rofi -dmenu -i -pid /tmp/rofi.2 | grep -Po '(?<=\(id=)\d+')
+        if [ $? -eq 0 ]
+        then
+            movie-cli movie $MOVIE_ID
+        fi
+    else
+        mv-cli $@
     fi
 }
 
